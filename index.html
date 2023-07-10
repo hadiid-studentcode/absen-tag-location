@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!--CSS LeafletJS-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+  </head>
+
+  <body>
+    <br />
+    <div class="container">
+      <div class="alert alert-success">
+        <h3>Latihan Mendapatkan Kordinat Lokasi</h3>
+      </div>
+      <p>Klik tombol di bawah ini untuk mengetahui kordinat anda sekarang</p>
+      <!-- saat button diklik maka akan menjalankan fungsi getlokasi -->
+      <button class="btn btn-primary btn-block" onclick="getlokasi()">
+        Dapatkan lokasi
+      </button>
+      <br />
+      <!-- peta akan ditampilkan di bawah ini dengan ukuran lebar 600px dan tinggi 400px -->
+      <div
+        id="mapid"
+        style="border-radius: 8px; width: 100%; height: 400px"
+      ></div>
+
+      <div id="pesan"></div>
+    </div>
+
+    <!--JavaScript LeafletJS-->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <script>
+      //mengambil elemen lokasi dan memasukannya ke dalam variabel lokasi
+      var lokasi = document.getElementById("lokasi");
+      const pesan = document.querySelector("#pesan");
+
+      function getlokasi() {
+        //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
+        if (navigator.geolocation) {
+          // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
+          //showPosition adalah fungsi yang akan dijalankan
+          navigator.geolocation.getCurrentPosition(showPosition);
+        }
+      }
+
+      function showPosition(position) {
+        // const lat = position.coords.latitude;
+        // const lng = position.coords.longitude;
+
+        // 0.4474017908401004, 101.39025980913007
+
+        // koordinat posisi sekarang contoh
+
+        const lat =  0.4367162384932719;
+        const lng =101.39268429843247 ;
+
+        // koordinat posisi sekarang contoh
+
+        console.log(`lat ${lat} lng ${lng}`);
+
+        // function haversine(lat1, lon1, lat2, lon2) {
+
+        // }
+
+        // const lat1 = 37.7749; // Latitude of first point
+        // const lon1 = -122.4194; // Longitude of first point
+        // const lat2 = 37.7749; // Latitude of second point
+        // const lon2 = -122.4195; // Longitude of second point
+        // const radius = 0.1; // Radius in kilometers
+
+        // const distance = haversine(lat1, lon1, lat2, lon2);
+        // if (distance <= radius) {
+        //   console.log("Coordinates are within radius");
+        // } else {
+        //   console.log("Coordinates are outside radius");
+        // }
+
+        //0.44729987000619664, 101.39051461897068   smk muti
+
+        //    koordinat posisi sekolah
+
+        const LatSekolah_barat = 0.4469780147319168;
+        const latSekolah2_timur = 0.44797576603621897;
+        const lngSekolah1_barat = 101.39034563981323;
+        const lngSekolah2_timur = 101.39038050852825;
+
+        // koordinatr rumah saya
+
+        
+
+        if (
+          0.4370220443803443 >= lat && // x
+          lat <= 0.43707564259164433 && // x
+          lng >= 101.39236783945468 && // x
+          lng <= 101.39336021695242 && // x
+           0.4365418558971475 <= lat || // y
+          lat <= 0.43730362517005256 && // y
+          lng >= 101.39288008429874 && // y
+          lng <= 101.39284254875454  // y
+        ) {
+          console.log("lagi dirumah");
+        } else {
+          console.log("lagi diluar rumah");
+        }
+
+        // end
+
+        if (
+          LatSekolah_barat <= lat &&
+          latSekolah2_timur >= lat &&
+          lngSekolah1_barat >= lng &&
+          lng <= lngSekolah2_timur
+        ) {
+          console.log("absen diterima");
+          pesan.innerHTML = "<h1>absen diterima</h1>";
+        } else {
+          console.log("absen tidak diterima");
+          pesan.innerHTML = "<h1>absen tidak diterima</h1>";
+        }
+
+        // masukan kordinat latitude dan longitude ke dalam peta leaflet
+        // ini adalah format dan cara memasukan kordinat pada leaflet js
+        // jika kalian belum paham, bisa melihat tutorial yang saya buat tentang leaflet js di blog ini
+
+        var mymap = L.map("mapid").setView(
+          [position.coords.latitude, position.coords.longitude],
+          13
+        );
+
+        //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+        }).addTo(mymap);
+        //menambahkan marker letak posisi dengan lat dan lng yang telah didapat sebelumnya
+        L.marker([position.coords.latitude, position.coords.longitude])
+          .addTo(mymap)
+          .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
+
+        L.marker([0.4370220443803443, 101.39236783945468])
+          .addTo(mymap)
+          .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
+        var circle = L.circle([0.4370220443803443, 101.39236783945468], {
+          color: "red",
+          fillColor: "#f03",
+          fillOpacity: 0.5,
+          radius: 200,
+        }).addTo(mymap);
+      }
+    </script>
+  </body>
+</html>
