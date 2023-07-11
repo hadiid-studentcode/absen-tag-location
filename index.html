@@ -74,10 +74,9 @@
 
         // koordinat posisi sekarang contoh smp muhammadiyah 4 pekanbaru
 
-        // 0.3434110008435907, 101.1918892686857
-      
-        // const lat =    0.343411000843590;
-        // const lng = 101.1918892686857 ;
+
+        // const lat = 0.34335486059841364;
+        // const lng = 101.1921946802952;
 
         // koordinat posisi sekarang contoh
 
@@ -111,23 +110,21 @@
 
         // koordinatr rumah saya
 
-        
-
         if (
-          0.343433894919404576 >= lat && // x
-          lat <=0.3435787366018128 && // x
-          lng >= 101.19051614411384 && // x
-          lng <= 101.19305883294905 && // x
-          0.342398549112456 <= lat || // y
-          lat <=0.34457641448555465 && // y
-          lng >= 101.19192154226909 && // y
-          lng <= 101.19182493935725  // y
+          (0.3437089074476917 >= lat && // x
+            lat <= 0.34374108559015165 && // x
+            lng >= 101.19020984271405 && // x
+            lng <=101.19399707453083 && // x
+            0.34200305937507647 <= lat) || // y
+          (lat <= 0.3449427478863054 && // y
+            lng >= 101.19250578751688 && // y
+            lng <= 101.19223757476648) // y
         ) {
           console.log("absen diterima");
-           pesan.innerHTML = "<h1>absen diterima</h1>";
+          pesan.innerHTML = "<h1>absen diterima</h1>";
         } else {
           console.log("absen tidak diterima");
-           pesan.innerHTML = "<h1>absen tidak diterima</h1>";
+          pesan.innerHTML = "<h1>absen tidak diterima</h1>";
         }
 
         // end
@@ -170,10 +167,10 @@
           .addTo(mymap)
           .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
 
-        L.marker([0.4474017908401004, 101.39025980913007])
+        L.marker([lat, lng])
           .addTo(mymap)
           .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-        var circle = L.circle([0.4474017908401004, 101.39025980913007], {
+        var circle = L.circle([lat,lng], {
           color: "red",
           fillColor: "#f03",
           fillOpacity: 0.5,
