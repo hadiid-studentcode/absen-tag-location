@@ -66,15 +66,15 @@
       }
 
       function showPosition(position) {
-        // const lat = position.coords.latitude;
-        // const lng = position.coords.longitude;
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
         // 0.4474017908401004, 101.39025980913007
 
-        // koordinat posisi sekarang contoh
-
-        const lat =  0.4367162384932719;
-        const lng =101.39268429843247 ;
+        // koordinat posisi sekarang contoh smp muhammadiyah 4 pekanbaru
+      
+        // const lat =   0.44737990487316553;
+        // const lng = 101.389267207282367 ;
 
         // koordinat posisi sekarang contoh
 
@@ -111,34 +111,36 @@
         
 
         if (
-          0.4370220443803443 >= lat && // x
-          lat <= 0.43707564259164433 && // x
-          lng >= 101.39236783945468 && // x
-          lng <= 101.39336021695242 && // x
-           0.4365418558971475 <= lat || // y
-          lat <= 0.43730362517005256 && // y
-          lng >= 101.39288008429874 && // y
-          lng <= 101.39284254875454  // y
+          0.4475353812444346 >= lat && // x
+          lat <= 0.4475246713807722 && // x
+          lng >= 101.38804950040203 && // x
+          lng <= 101.3900772487209 && // x
+          0.44651094513003037 <= lat || // y
+          lat <= 0.44828105970513765 && // y
+          lng >= 101.38941205145932 && // y
+          lng <= 101.38937446011312  // y
         ) {
-          console.log("lagi dirumah");
+          console.log("absen diterima");
+           pesan.innerHTML = "<h1>absen diterima</h1>";
         } else {
-          console.log("lagi diluar rumah");
+          console.log("absen tidak diterima");
+           pesan.innerHTML = "<h1>absen tidak diterima</h1>";
         }
 
         // end
 
-        if (
-          LatSekolah_barat <= lat &&
-          latSekolah2_timur >= lat &&
-          lngSekolah1_barat >= lng &&
-          lng <= lngSekolah2_timur
-        ) {
-          console.log("absen diterima");
-          pesan.innerHTML = "<h1>absen diterima</h1>";
-        } else {
-          console.log("absen tidak diterima");
-          pesan.innerHTML = "<h1>absen tidak diterima</h1>";
-        }
+        // if (
+        //   LatSekolah_barat <= lat &&
+        //   latSekolah2_timur >= lat &&
+        //   lngSekolah1_barat >= lng &&
+        //   lng <= lngSekolah2_timur
+        // ) {
+        //   console.log("absen diterima");
+        //   pesan.innerHTML = "<h1>absen diterima</h1>";
+        // } else {
+        //   console.log("absen tidak diterima");
+        //   pesan.innerHTML = "<h1>absen tidak diterima</h1>";
+        // }
 
         // masukan kordinat latitude dan longitude ke dalam peta leaflet
         // ini adalah format dan cara memasukan kordinat pada leaflet js
@@ -165,10 +167,10 @@
           .addTo(mymap)
           .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
 
-        L.marker([0.4370220443803443, 101.39236783945468])
+        L.marker([0.4474017908401004, 101.39025980913007])
           .addTo(mymap)
           .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-        var circle = L.circle([0.4370220443803443, 101.39236783945468], {
+        var circle = L.circle([0.4474017908401004, 101.39025980913007], {
           color: "red",
           fillColor: "#f03",
           fillOpacity: 0.5,
