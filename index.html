@@ -69,14 +69,20 @@
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
+        console.log(position);
+
+        // konversi lat panjang sesuai gmaps
+
         // 0.4474017908401004, 101.39025980913007
         // 0.3435349022697223, 101.19217590176855
 
         // koordinat posisi sekarang contoh smp muhammadiyah 4 pekanbaru kota
 
+        // 0.344102, 101.191602
+         // 0.343405, 101.191280
 
-        // const lat = 0.34335486059841364;
-        // const lng = 101.1921946802952;
+        // const lat = 0.343405;
+        // const lng = 101.191280;
 
         // koordinat posisi sekarang contoh
 
@@ -111,14 +117,14 @@
         // koordinatr rumah saya
 
         if (
-          0.34435262436425623 >= lat && // x
-            lat <= 0.343966368536061 && // x
-            lng >= 101.18718431416616 && // x
-            lng <=101.19759126646603 && // x
-            0.33890247902083537 <= lat || // y
-          lat <= 0.3487406651533659 && // y
-            lng >= 101.19218396244358 && // y
-            lng <= 101.19198014794719 // y
+          0.34408 >= lat && // x
+            lat <= 0.344145 && // x
+            lng >= 101.186109 && // x
+            lng <= 101.198233 && // x
+            0.338609 <= lat || // y
+          lat <= 0.347385 && // y
+            lng >= 101.191731 && // y
+            lng <= 101.191838 // y
         ) {
           console.log("absen diterima");
           pesan.innerHTML = "<h1>absen diterima</h1>";
@@ -170,7 +176,7 @@
         L.marker([lat, lng])
           .addTo(mymap)
           .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-        var circle = L.circle([lat,lng], {
+        var circle = L.circle([lat, lng], {
           color: "red",
           fillColor: "#f03",
           fillOpacity: 0.5,
