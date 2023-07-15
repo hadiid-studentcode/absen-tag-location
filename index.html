@@ -56,6 +56,10 @@
       var lokasi = document.getElementById("lokasi");
       const pesan = document.querySelector("#pesan");
 
+    addEventListener("load", function () {
+     alert('okee');
+    });
+
       function getlokasi() {
         //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
         if (navigator.geolocation) {
